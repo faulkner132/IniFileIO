@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="68e67e81-cc6b-451e-aa9c-951c1d7d9a13" revisionNumber="1">
+  <developerSampleDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+
+      <para>Below is a very basic usage example to demonstrate how the object is used.</para>
+    </introduction>
+
+    <!-- <procedure>Optional procedures.  See How To document for procedure layout example.</procedure> -->
+    <!-- <requirements>Optional requirements section</requirements> -->
+    <!-- <demonstrates>Optional info about what is demonstrated</demonstrates> -->
+    <!-- <codeExample>Optional code example</codeExample> -->
+
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+      <section address="Start">
+          <content>
+              <para>Assuming the following contents for "MyFile.ini".</para>
+              <code language="none">
+                  <![CDATA[[Section 1]
+Key1=This value
+Key2=That value
+
+[Section 2]
+Key1=Section key
+Another key=Here
+]]>
+
+              </code>
+          </content>
+      </section>
+      
+    <section address="Example">
+      <title>Example in VB.NET</title>
+        <content>
+            <code language="vb.net">
+                <![CDATA[Dim iniTest As New IniFileIO.IniFile("MyFile.ini")
+
+With iniTest
+
+    ' value1 is set to 'This value'.
+    Dim value1 As String = .GetKeyValue("Section 1", "Key1")
+
+    ' value2 is set to 'That value'.
+    Dim value2 As String = .GetKeyValue("Section 1", "Key2",
+                                        defaultValue:="n/a")
+
+    ' value3 is set to 'n/a'.
+    Dim value3 As String = .GetKeyValue("Section 1", "Key3",
+                                        defaultValue:="n/a")
+
+    If value3 = "n/a" Then
+        value3 = "This and That value"
+    End If
+
+    .SetKeyData("Section 1", "Key2",
+                value:=value2 & "-updated")
+
+    ' Default behavior is to create if the path doesn't exist.
+    ' 'Key3' will be added to 'Section 1'.
+    .SetKeyData("Section 1", "Key3",
+                value:=value3)
+
+
+    ' 'Key3' does not exist in 'Section 2' and the option to
+    ' automatically create is disabled.
+    .SetKeyData("Section 2", "Key3",
+                value:="Will not be created.",
+                createIfNotExist:=False)
+
+
+    ' 'New Section' and the specified keys will be created.
+    .SetKeyData("New Section", "New Key 1",
+                value:="Created key 1",
+                comments:="This key did not previously exist.")
+
+    .SetKeyData("New Section", "New Key 2",
+                value:="Created key 2",
+                comments:="This key didn't exist either.")
+
+    ' Update the comments on the newly created section.
+    .SetSectionData("New Section",
+                    comments:="This section was created on the fly.")
+
+
+    ' Push all changes.
+    .SaveFile()
+
+End With]]>
+            </code>
+        </content>
+    </section>
+      <section address="Result">
+          <content>
+              <para>New contents of "MyFile.ini".</para>
+              <code language="none">
+                  <![CDATA[[Section 1]
+Key1=This value
+Key2=That value-updated
+Key3=This and That value
+
+
+[Section 2]
+Key1=Section key
+Another key=Here
+
+
+; This section was created on the fly.
+[New Section]
+
+; This key did not previously exist.
+New Key 1=Created key 1
+
+; This key didn't exist either.
+New Key 2=Created key 2]]>
+
+              </code>
+          </content>
+      </section>
+
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID">Link text</link>
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerSampleDocument>
+</topic>

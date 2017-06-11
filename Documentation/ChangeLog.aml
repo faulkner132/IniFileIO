@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="d6b5218b-611e-43ed-ba85-e9f911d697a2" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction>
+      <!-- Uncomment this to generate an outline of the section and sub-section
+           titles.  Specify a numeric value as the inner text to limit it to
+           a specific number of sub-topics when creating the outline.  Specify
+           zero (0) to limit it to top-level sections only.  -->
+      <!-- <autoOutline /> -->
+    </introduction>
+
+    <!-- Add one or more top-level section elements.  These are collapsible.
+         If using <autoOutline />, add an address attribute to identify it
+         and specify a title so that it can be jumped to with a hyperlink. -->
+      <section address="Change5">
+          <title>1.3.2 on November 20, 2016.</title>
+          <content>
+              <para>
+                  <legacyBold>Full build version = 1.3.2.11206</legacyBold>
+              </para>
+              <para>
+                  <legacyItalic>
+                      No anticipated compatibility issues with the previous version.
+                  </legacyItalic>
+              </para>
+              <para>Fixes:</para>
+              <list class="bullet">
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.SectionHasData(IniFileIO.IniFile.Section)</codeEntityReference> now checks for the presence of keys and/or comments.
+                      </para>
+                   </listItem>
+                   <listItem>
+                      <para>
+                          Update to fix an issue where objects created from a blank/invalid file or string would initialize to an object containing a single empty section.
+                          The new behavior now results in an object containing no sections.
+                      </para>
+                  </listItem>
+              </list>
+          </content>
+      </section>
+
+      <section address="Change4">
+          <title>1.3.1 on October 28, 2015.</title>
+          <content>
+              <para>
+                  <legacyBold>Full build version = 1.3.1.10285</legacyBold>
+              </para>
+              <para>
+                  <legacyItalic>
+                      Possible compatibility issue:
+                  </legacyItalic>
+                  Objects created via the <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.CreateFromString(System.String,System.String)</codeEntityReference> method.
+                  See the Fixes section below.
+              </para>
+              <para>Updates:</para>
+              <list class="bullet">
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.SaveFile(System.Boolean,System.Boolean)</codeEntityReference> throws an exception when the <codeEntityReference qualifyHint="true">P:IniFileIO.IniFile.FileName</codeEntityReference> property is not set.
+                      </para>
+                  </listItem>
+              </list>
+              <para>Fixes:</para>
+              <list class="bullet">
+                  <listItem>
+                      <para>
+                          The <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.CreateFromString(System.String,System.String)</codeEntityReference> method now deletes the temp file it creates.
+                          This will require the <codeEntityReference qualifyHint="true">P:IniFileIO.IniFile.FileName</codeEntityReference> property to be set manually <legacyItalic>if</legacyItalic> the file is going to be saved.
+                      </para>
+                  </listItem>
+              </list>
+          </content>
+      </section>
+      
+      <section address="Change3">
+          <title>1.3.0 on June 21, 2015.</title>
+          <content>
+              <para>
+                  <legacyBold>Full build version = 1.3.0.06215</legacyBold>
+              </para>
+              <para>
+                  <legacyItalic>
+                      No anticipated compatibility issues with the previous version.
+                  </legacyItalic>
+              </para>
+              <para>New Method:</para>
+              <list class="bullet">
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.GetOutputString(System.Boolean)</codeEntityReference>
+                      </para>
+                  </listItem>
+              </list>
+              <para>Updates:</para>
+              <list class="bullet">
+                  <listItem>
+                      <para>
+                          Output is not "trimmed" to remove linebreaks on the end. This had an unintended consequence of potentially removing whitespace on key value ends.
+                      </para>
+                  </listItem>
+                  <listItem>
+                      <para>
+                          Refactored internal methods to support the new <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.GetOutputString(System.Boolean)</codeEntityReference> method.
+                      </para>
+                  </listItem>
+              </list>
+          </content>
+      </section>
+      
+      <section address="Change2">
+          <title>1.2.0 on September 30, 2014.</title>
+          <content>
+              <para>
+                  <legacyBold>Full build version = 1.2.0.09304</legacyBold>
+              </para>
+              <para>
+                  <legacyItalic>No anticipated compatibility issues with the previous version.
+                  However, projects referencing the DLL may need to be recompiled due to method signature changes.</legacyItalic>
+              </para>
+              <para>Updates:</para>
+              <list class="bullet">
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.#ctor(System.String,System.Boolean,System.Boolean)</codeEntityReference>
+                          Constructor updated to allow setting of new properties.</para>
+                  </listItem>
+              </list>
+              <para>New Properties:</para>
+              <list class="bullet">
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">P:IniFileIO.IniFile.KeyNameWhitespaceLiteral</codeEntityReference>
+                      </para>
+                  </listItem>
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">P:IniFileIO.IniFile.KeyValueWhitespaceLiteral</codeEntityReference>
+                      </para>
+                  </listItem>
+              </list>
+          </content>
+      </section>
+      
+      <section address="Change1">
+          <title>1.1.0 on March 9, 2014.</title>
+          <content>
+              <para>
+                  <legacyBold>Full build version = 1.1.0.03094</legacyBold>
+              </para>
+              <para>
+                  <legacyItalic>No anticipated compatibility issues with the previous version.</legacyItalic>
+              </para>
+              <para>New Methods:</para>
+              <list class="bullet">
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.CreateFromString(System.String,System.String)</codeEntityReference>
+                      </para>
+                  </listItem>
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.GetAllKeysWithAName(System.String)</codeEntityReference>
+                      </para>
+                  </listItem>
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.GetAllKeysWithAValue(System.String,System.String)</codeEntityReference>
+                      </para>
+                  </listItem>
+              </list>
+              <para>Fixes:</para>
+              <list class="bullet">
+                  <listItem>
+                      <para>Documentation updated with many issues to this file addressed.</para>
+                  </listItem>
+              </list>
+          </content>
+      </section>
+      
+    <section address="Initial">
+      <title>1.0.0 on April 11, 2013.</title>
+      <content>
+        <para>
+            <legacyBold>Full build version = 1.0.0.04113</legacyBold></para>
+          <para>Intial release.</para>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID"/>
+      <link xlink:href="Other Topic's ID">Link inner text</link>
+
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8270" />
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

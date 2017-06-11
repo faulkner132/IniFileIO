@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/faulkner132/IniFileIO</projectUrl>
+    <!-- <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl> -->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Previously IniFileDriver (http://inifile.codeplex.com/).
+	Rebranded using a more relevant name and made available via Nuget and GitHub.</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>IniFile IO Read Write</tags>
+  </metadata>
+  <files>
+    <file src="..\Documentation\Help\$id$.chm" target="lib\$id$.chm" />
+  </files>
+</package>
