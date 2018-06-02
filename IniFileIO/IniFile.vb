@@ -691,6 +691,49 @@ Public Class IniFile
 
     End Function
 
+
+
+
+    ''' <summary>
+    ''' Returns a dictionary lookup by <see cref="Section.Name"/> for the currently loaded <see cref="Section"/>s.
+    ''' The inner dictionary lookup is by <see cref="Key.Name"/> for each <see cref="Section"/>'s <see cref="Section.Keys"/>.
+    ''' <para>This method does not support multiple <see cref="Section"/>s with the same <see cref="Section.Name"/> value nor does it support a single <see cref="Section"/> which has multiple <see cref="Key"/>s with the same <see cref="Key.Name"/> value.
+    ''' An exception is thrown when this is encountered.</para>
+    ''' </summary>
+    ''' <returns>A dictionary lookup with each <see cref="Section"/>'s <see cref="Section.Name"/> as the <c>Key</c> and <see cref="SectionToDictionary(Section)"/> as the <c>Value</c>.</returns>
+    ''' <exception cref="ArgumentException">Thrown when a duplicate key is attempted to be added to the dictionary.</exception>
+    ''' <seealso cref="ToKeyValuePair()"/>
+    Public Function ToDictionary() As Dictionary(Of String, Dictionary(Of String, String))
+
+        Dim dictionary As New Dictionary(Of String, Dictionary(Of String, String))
+
+        For Each section As Section In _sections
+            dictionary.Add(section.Name, SectionToDictionary(section))
+        Next
+
+        Return dictionary
+
+    End Function
+
+    ''' <summary>
+    ''' Returns an array of key value pairs by <see cref="Section.Name"/> for the currently loaded <see cref="Section"/>s.
+    ''' The inner array of key value pairs is by <see cref="Key"/> <see cref="Key.Name"/> for each <see cref="Section"/>.
+    ''' <para>This method supports multiple <see cref="Section"/>s with the same <see cref="Section.Name"/> value as well as a single <see cref="Section"/> which has multiple <see cref="Key"/>s with the same <see cref="Key.Name"/> value.</para>
+    ''' </summary>
+    ''' <returns>An array of key value pairs with each <see cref="Section"/>'s <see cref="Section.Name"/> as the <c>Key</c> and <see cref="SectionToKeyValuePair(Section)"/> as the <c>Value</c>.</returns>
+    ''' <seealso cref="ToDictionary()"/>
+    Public Function ToKeyValuePair() As KeyValuePair(Of String, KeyValuePair(Of String, String)())()
+
+        Dim values As New List(Of KeyValuePair(Of String, KeyValuePair(Of String, String)()))
+
+        For Each section As Section In _sections
+            values.Add(New KeyValuePair(Of String, KeyValuePair(Of String, String)())(section.Name, SectionToKeyValuePair(section)))
+        Next
+
+        Return values.ToArray()
+
+    End Function
+
 #End Region
 
 
@@ -1207,6 +1250,47 @@ Public Class IniFile
         Return Not String.IsNullOrEmpty(section.Name) OrElse
             (section.Keys IsNot Nothing AndAlso section.Keys.Count > 0) OrElse
             Not String.IsNullOrEmpty(section.Comments)
+
+    End Function
+
+
+    ''' <summary>
+    ''' Returns a dictionary lookup for the provided <paramref name="section"/>'s <see cref="Section.Keys"/>.
+    ''' <para>This method does not support multiple <see cref="Key"/> with the same <see cref="Key.Name"/> value.
+    ''' An exception is thrown when this is attempted.</para>
+    ''' </summary>
+    ''' <param name="section">Section to build to the dictionary from.</param>
+    ''' <returns>Dictionary with each <see cref="Section.Keys"/>' <see cref="Key.Name"/> as the <c>Key</c> and <see cref="Key.Value"/> as the <c>Value</c>.</returns>
+    ''' <exception cref="ArgumentException">Thrown when a duplicate key is attempted to be added to the dictionary.</exception>
+    ''' <seealso cref="SectionToKeyValuePair(Section)"/>
+    Public Shared Function SectionToDictionary(section As Section) As Dictionary(Of String, String)
+
+        Dim dictionary As New Dictionary(Of String, String)
+
+        For Each key As Key In section.Keys
+            dictionary.Add(key.Name, key.Value)
+        Next
+
+        Return dictionary
+
+    End Function
+
+    ''' <summary>
+    ''' Returns an array of key value pairs representing each <see cref="Key"/> in the provided <paramref name="section"/>.
+    ''' <para>This method supports multiple <see cref="Key"/>s with the same <see cref="Key.Name"/> value.</para>
+    ''' </summary>
+    ''' <param name="section">Section to build to the key value pairs from.</param>
+    ''' <returns>Key value pair array with each <see cref="Section.Keys"/>'s <see cref="Key.Name"/> as the <c>Key</c> and <see cref="Key.Value"/> as the <c>Value</c>.</returns>
+    ''' <seealso cref="SectionToDictionary(Section)"/>
+    Public Shared Function SectionToKeyValuePair(section As Section) As KeyValuePair(Of String, String)()
+
+        Dim values As New List(Of KeyValuePair(Of String, String))
+
+        For Each key As Key In section.Keys
+            values.Add(New KeyValuePair(Of String, String)(key.Name, key.Value))
+        Next
+
+        Return values.ToArray()
 
     End Function
 

@@ -21,8 +21,45 @@
     <!-- Add one or more top-level section elements.  These are collapsible.
          If using <autoOutline />, add an address attribute to identify it
          and specify a title so that it can be jumped to with a hyperlink. -->
+      <section address="Change6">
+          <title>1.4.0 on June 2, 2018.</title>
+          <content>
+              <para>
+                  <legacyBold>Full build version = 1.4.0.06028</legacyBold>
+              </para>
+              <para>
+                  <legacyItalic>
+                      No anticipated compatibility issues with the previous version.
+                  </legacyItalic>
+              </para>
+              <para>New Methods:</para>
+              <list class="bullet">
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.ToDictionary</codeEntityReference>
+                      </para>
+                   </listItem>
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.ToKeyValuePair</codeEntityReference>
+                      </para>
+                   </listItem>
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.SectionToDictionary(IniFileIO.IniFile.Section)</codeEntityReference>
+                      </para>
+                   </listItem>
+                  <listItem>
+                      <para>
+                          <codeEntityReference qualifyHint="true">M:IniFileIO.IniFile.SectionToKeyValuePair(IniFileIO.IniFile.Section)</codeEntityReference>
+                      </para>
+                   </listItem>
+              </list>
+          </content>
+      </section>
+
       <section address="Change5">
-          <title>1.3.2 on November 20, 2016.</title>
+        <title>1.3.2 on November 20, 2016.</title>
           <content>
               <para>
                   <legacyBold>Full build version = 1.3.2.11206</legacyBold>
